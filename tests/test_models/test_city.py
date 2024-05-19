@@ -53,7 +53,9 @@ class TestCity(unittest.TestCase):
         city.name = "New York City"
         city_dict = city.to_dict()
         self.assertEqual(city_dict["__class__"], "City")
-        self.assertEqual(city_dict["state_id"], "12345678-90ab-cdef-ghij-klmnopqrst")
+        self.assertEqual(
+                city_dict["state_id"],
+                "12345678-90ab-cdef-ghij-klmnopqrst")
         self.assertEqual(city_dict["name"], "New York City")
         self.assertIn("id", city_dict)
         self.assertIn("created_at", city_dict)
@@ -69,7 +71,9 @@ class TestCity(unittest.TestCase):
         city_str = str(city)
         self.assertIn("[City]", city_str)
         self.assertIn(city.id, city_str)
-        self.assertIn("'state_id': '12345678-90ab-cdef-ghij-klmnopqrst'", city_str)
+        self.assertIn(
+                "'state_id': '12345678-90ab-cdef-ghij-klmnopqrst'",
+                city_str)
         self.assertIn("'name': 'Cairo'", city_str)
 
     def test_city_save_method(self):

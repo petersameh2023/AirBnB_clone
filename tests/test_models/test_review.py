@@ -45,8 +45,8 @@ class TestReview(unittest.TestCase):
     def test_review_user_id_setter(self):
         """Test setting the user_id attribute."""
         review = Review()
-        review.user_id = "98765432-10fe-dcba-9876-543210fedcba"
-        self.assertEqual(review.user_id, "98765432-10fe-dcba-9876-543210fedcba")
+        review.user_id = "98765432-10fe-dcba-9876"
+        self.assertEqual(review.user_id, "98765432-10fe-dcba-9876")
 
     def test_review_text_setter(self):
         """Test setting the text attribute."""
@@ -57,13 +57,13 @@ class TestReview(unittest.TestCase):
     def test_review_to_dict(self):
         """Test to_dict method."""
         review = Review()
-        review.place_id = "12345678-90ab-cdef-ghij-klmnopqrst"
-        review.user_id = "98765432-10fe-dcba-9876-543210fedcba"
+        review.place_id = "12345678-90ab-cdef-ghij"
+        review.user_id = "98765432-10fe-dcba-9876"
         review.text = "I had a wonderful time here."
         review_dict = review.to_dict()
         self.assertEqual(review_dict["__class__"], "Review")
-        self.assertEqual(review_dict["place_id"], "12345678-90ab-cdef-ghij-klmnopqrst")
-        self.assertEqual(review_dict["user_id"], "98765432-10fe-dcba-9876-543210fedcba")
+        self.assertEqual(review_dict["place_id"], "12345678-90ab-cdef-ghij")
+        self.assertEqual(review_dict["user_id"], "98765432-10fe-dcba-9876")
         self.assertEqual(review_dict["text"], "I had a wonderful time here.")
         self.assertIn("id", review_dict)
         self.assertIn("created_at", review_dict)
@@ -74,14 +74,14 @@ class TestReview(unittest.TestCase):
     def test_review_str_representation(self):
         """Test __str__ method."""
         review = Review()
-        review.place_id = "12345678-90ab-cdef-ghij-klmnopqrst"
-        review.user_id = "98765432-10fe-dcba-9876-543210fedcba"
+        review.place_id = "12345678-90ab-cdef-ghij"
+        review.user_id = "98765432-10fe-dcba-9876"
         review.text = "The staff was very friendly."
         review_str = str(review)
         self.assertIn("[Review]", review_str)
         self.assertIn(review.id, review_str)
-        self.assertIn("'place_id': '12345678-90ab-cdef-ghij-klmnopqrst'", review_str)
-        self.assertIn("'user_id': '98765432-10fe-dcba-9876-543210fedcba'", review_str)
+        self.assertIn("'place_id': '12345678-90ab-cdef-ghij'", review_str)
+        self.assertIn("'user_id': '98765432-10fe-dcba-9876'", review_str)
         self.assertIn("'text': 'The staff was very friendly.'", review_str)
 
     def test_review_save_method(self):
@@ -98,14 +98,14 @@ class TestReview(unittest.TestCase):
             'id': '12345678-90ab-cdef-ghij-klmnopqrst',
             'created_at': '2023-05-18T12:00:00.000000',
             'updated_at': '2023-05-18T12:00:00.000000',
-            'place_id': '98765432-10fe-dcba-9876-543210fedcba',
-            'user_id': 'abcdef12-3456-7890-1234-567890abcdef',
-            'text': 'I would recommend this place to anyone.'
+            'place_id': '98765432-10fe-dcba-9876',
+            'user_id': 'abcdef12-3456-7890-1234',
+            'text': 'I would recommend this place'
         }
         review = Review(**review_dict)
         self.assertEqual(review.id, '12345678-90ab-cdef-ghij-klmnopqrst')
-        self.assertEqual(review.place_id, '98765432-10fe-dcba-9876-543210fedcba')
-        self.assertEqual(review.user_id, 'abcdef12-3456-7890-1234-567890abcdef')
-        self.assertEqual(review.text, 'I would recommend this place to anyone.')
+        self.assertEqual(review.place_id, '98765432-10fe-dcba-9876')
+        self.assertEqual(review.user_id, 'abcdef12-3456-7890-1234')
+        self.assertEqual(review.text, 'I would recommend this place')
         self.assertIsInstance(review.created_at, datetime.datetime)
         self.assertIsInstance(review.updated_at, datetime.datetime)
